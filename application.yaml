@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: hello-world-dispatch
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: hello-world-dispatch
@@ -14,7 +14,7 @@ spec:
         app: hello-world-dispatch
     spec:
       containers:
-      - image: "cmays/hello-world-dispatch@sha256:2510e9bf465ab9701144ad72abe7f3e7f134a584ba933e09b11f4e915dba6246"
+      - image: "cmays/hello-world-dispatch@sha256:4f8e2cb8eec06ebfe9f689c0655b65b54a20e68f7df52a9b1decea0bd349a909"
         name: hello-world-dispatch
         ports:
         - containerPort: 8080
