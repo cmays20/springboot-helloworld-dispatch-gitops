@@ -14,7 +14,7 @@ spec:
         app: hello-world-dispatch
     spec:
       containers:
-      - image: "cmays/hello-world-dispatch@sha256:fea14b177fdd58af73c596aebc68ca273d26b550046e28c53fa655d89ef1090c"
+      - image: "cmays/hello-world-dispatch@sha256:45284cb86d34df0bc55ad072b58370d4f4824de4d78e852e6b4ec7eedd554501"
         name: hello-world-dispatch
         ports:
         - containerPort: 8080
