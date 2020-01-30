@@ -7,7 +7,6 @@ kind: Deployment
 metadata:
   name: hello-world-dispatch
 spec:
-  replicas: 4
   selector:
     matchLabels:
       app: hello-world-dispatch
@@ -21,40 +20,3 @@ spec:
         name: hello-world-dispatch
         ports:
         - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-world-dispatch
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-    targetPort: 8080
-  selector:
-    app: hello-world-dispatch
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  annotations:
-    certmanager.k8s.io/issuer: letsencrypt-issuer
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/auth-response-headers: X-Forwarded-User
-    traefik.ingress.kubernetes.io/auth-type: forward
-    traefik.ingress.kubernetes.io/auth-url: http://traefik-forward-auth-kubeaddons.kubeaddons.svc.cluster.local:4181/
-    traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
-  generation: 1
-  labels:
-    app.kubernetes.io/instance: hello-world-dispatch
-    app.kubernetes.io/managed-by: Tiller
-    app.kubernetes.io/name: hello-world-dispatch
-  name: hello-world-dispatch
-spec:
-  rules:
-  - http:
-      paths:
-      - backend:
-          serviceName: hello-world-dispatch
-          servicePort: 80
-        path: /hello-world-dispatch
