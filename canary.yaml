@@ -1,0 +1,47 @@
+apiVersion: flagger.app/v1alpha3
+kind: Canary
+metadata:
+  name: hello-world-dispatch
+  namespace: default
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hello-world-dispatch
+  autoscalerRef:
+    apiVersion: autoscaling/v2beta1
+    kind: HorizontalPodAutoscaler
+    name: hello-world-dispatch
+  service:
+    gateways:
+    - public-gateway.istio-system.svc.cluster.local
+    hosts:
+    - '*'
+    port: 80
+    retries:
+      attempts: 3
+      perTryTimeout: 1s
+      retryOn: gateway-error,connect-failure,refused-stream
+    targetPort: 8080
+    trafficPolicy:
+      tls:
+        mode: ISTIO_MUTUAL
+  progressDeadlineSeconds: 60
+  canaryAnalysis:
+    interval: 1m
+    maxWeight: 50
+    metrics:
+    - interval: 1m
+      name: request-success-rate
+      threshold: 99
+    - interval: 30s
+      name: request-duration
+      threshold: 500
+    stepWeight: 10
+    threshold: 5
+    webhooks:
+    - metadata:
+        cmd: hey -z 1m -q 10 -c 2 http://hello-world-canary.default:80/
+      name: load-test
+      timeout: 5s
+      url: http://flagger-loadtester.kubeaddons-flagger/
