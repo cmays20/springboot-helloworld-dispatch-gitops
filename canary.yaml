@@ -29,7 +29,7 @@ spec:
   progressDeadlineSeconds: 60
   canaryAnalysis:
     interval: 1m
-    maxWeight: 50
+    maxWeight: 30
     metrics:
     - interval: 1m
       name: request-success-rate
