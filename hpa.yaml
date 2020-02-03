@@ -11,4 +11,4 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: hello-world-dispatch
-  targetCPUUtilizationPercentage: 99
+  targetCPUUtilizationPercentage: 80
