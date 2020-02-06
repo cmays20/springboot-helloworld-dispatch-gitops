@@ -29,7 +29,7 @@ spec:
   progressDeadlineSeconds: 60
   canaryAnalysis:
     interval: 1m
-    maxWeight: 30
+    maxWeight: 50
     metrics:
     - interval: 1m
       name: request-success-rate
@@ -37,7 +37,7 @@ spec:
     - interval: 30s
       name: request-duration
       threshold: 500
-    stepWeight: 10
+    stepWeight: 25
     threshold: 5
     webhooks:
     - metadata:
