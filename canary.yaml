@@ -47,7 +47,7 @@ spec:
       threshold: 500
     webhooks:
     - metadata:
-        cmd: hey -z 1m -q 10 -c 2 http://hello-world-dispatch-canary.hello-world:80/
+        cmd: hey -z 1m -q 10 -c 2 -H 'Cookie: type=insider' http://hello-world-dispatch-canary.hello-world:80/
       name: load-test
       timeout: 5s
       url: http://flagger-loadtester.kubeaddons-flagger/
