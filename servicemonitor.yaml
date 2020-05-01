@@ -12,5 +12,5 @@ spec:
     matchNames:
     - hello-world
   endpoints:
-  - port: 8080
+  - port: web
     path: /actuator/metrics
