@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: hello-world-monitor
+  labels:
+    app: prometheus-operator
+spec:
+  selector:
+    matchLabels:
+      app: hello-world-dispatch
+  namespaceSelector:
+    matchNames:
+    - hello-world
+  endpoints:
+  - port: 8080
+    path: /actuator/metrics
