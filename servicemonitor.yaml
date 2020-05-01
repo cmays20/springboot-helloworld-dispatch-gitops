@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: hello-world-dispatch
+      app: hello-world-dispatch-primary
   namespaceSelector:
     matchNames:
     - hello-world
