@@ -4,6 +4,7 @@ metadata:
   name: hello-world-monitor
   labels:
     app: prometheus-operator
+    release: prometheus-kubeaddons
 spec:
   selector:
     matchLabels:
