@@ -7,6 +7,10 @@ kind: Deployment
 metadata:
   name: hello-world-dispatch
   namespace: hello-world
+  annotations:
+    prometheus.io/scrape: “true”
+    prometheus.io/path: /actuator/prometheus
+    prometheus.io/port: “8080”
 spec:
   selector:
     matchLabels:
