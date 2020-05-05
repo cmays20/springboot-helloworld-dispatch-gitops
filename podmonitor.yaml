@@ -15,4 +15,4 @@ spec:
     - hello-world
   podMetricsEndpoints:
   - port: web
-    path: /actuator/metrics
+    path: /actuator/prometheus
