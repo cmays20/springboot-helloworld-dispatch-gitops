@@ -1,5 +1,5 @@
 apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
+kind: PodMonitor
 metadata:
   name: hello-world-monitor
   namespace: hello-world
@@ -13,6 +13,6 @@ spec:
   namespaceSelector:
     matchNames:
     - hello-world
-  endpoints:
+  podMetricsEndpoints:
   - port: web
     path: /actuator/metrics
