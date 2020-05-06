@@ -15,6 +15,10 @@ spec:
     metadata:
       labels:
         app: hello-world-dispatch
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/path: '/actuator/prometheus'
+        prometheus.io/port: '8080'
     spec:
       containers:
       - image: "cmays/hello-world-dispatch@sha256:f640e5e1d20f946f91879892975edceb7326d4c2eca8904e23623bbc0a2d1227"
