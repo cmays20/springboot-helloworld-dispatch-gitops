@@ -19,6 +19,7 @@ spec:
         prometheus.io/scrape: 'true'
         prometheus.io/path: '/actuator/prometheus'
         prometheus.io/port: '8080'
+        prometheus.io/scheme: 'http'
     spec:
       containers:
       - image: "cmays/hello-world-dispatch@sha256:9aaec4b62cd49d109c534c9ed1f9b06abedefdda77063b9183af47ccccfbbc4a"
