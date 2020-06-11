@@ -34,9 +34,6 @@ spec:
     - interval: 1m
       name: request-success-rate
       threshold: 99
-    - interval: 30s
-      name: request-duration
-      threshold: 500
     stepWeight: 25
     threshold: 5
     webhooks:
