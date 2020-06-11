@@ -1,4 +1,4 @@
-apiVersion: flagger.app/v1beta1
+apiVersion: flagger.app/v1alpha3
 kind: Canary
 metadata:
   name: hello-world-dispatch
@@ -27,15 +27,17 @@ spec:
       tls:
         mode: ISTIO_MUTUAL
   progressDeadlineSeconds: 60
-  analysis:
+  canaryAnalysis:
     interval: 1m
     maxWeight: 50
-    stepWeight: 25
     metrics:
     - interval: 1m
       name: request-success-rate
-      thresholdRange: 
-        min: 99
+      threshold: 99
+    - interval: 30s
+      name: request-duration
+      threshold: 500
+    stepWeight: 25
     threshold: 5
     webhooks:
     - metadata:
